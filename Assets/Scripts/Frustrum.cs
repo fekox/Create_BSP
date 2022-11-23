@@ -63,8 +63,6 @@ public class Frustrum : MonoBehaviour
 
     private void FixedUpdate()
     {
-
-
         UpdatePlanes();
         for (int i = 0; i < roomObjects.Count; i++)
         {
