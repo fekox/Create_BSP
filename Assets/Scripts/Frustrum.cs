@@ -10,14 +10,15 @@ public class Frustrum : MonoBehaviour
     private const int maxFrustrumPlanes = 6;
     private const int aabbPoints = 8;
 
+    //Inicializo los planos del frustrum.
     Plane[] planes = new Plane[maxFrustrumPlanes];
 
+    //Lista de los puntos lejanos.
     public List<Vector3> farPoints = new List<Vector3>();
+    
+    //Lista de los puntos cercanos.
     public List<Vector3> nearPoints = new List<Vector3>();
     public float distance;
-
-    [SerializeField] List<GameObject> TestObjests = new List<GameObject>();
-
 
     [SerializeField] Vector3 nearTopLeft;
     [SerializeField] Vector3 nearTopRight;
@@ -46,15 +47,23 @@ public class Frustrum : MonoBehaviour
 
     void Start()
     {
+        //Creo los planos del frustrum.
         for (int i = 0; i < maxFrustrumPlanes; i++)
         {
             planes[i] = new Plane();
         }
 
+
+        //Mitad de la camara en alto. (Plano cercano).
         halfCameraHeightNear = Mathf.Tan((cam.fieldOfView / 2) * Mathf.Deg2Rad) * cam.nearClipPlane;
+
+        //Mitad de la camara en ancho. (Plano cercano). 
         CameraHalfWidthNear = (cam.aspect * halfCameraHeightNear);
 
+        //Mitad de la camara en alto. (Plano lejano).
         halfCameraHeightfar = Mathf.Tan((cam.fieldOfView / 2) * Mathf.Deg2Rad) * cam.farClipPlane;
+
+        //Mitad de la camara en ancho. (Plano lejano). 
         CameraHalfWidthFar = (cam.aspect * halfCameraHeightfar);
 
         distance = cam.farClipPlane;
@@ -108,9 +117,8 @@ public class Frustrum : MonoBehaviour
         }
     }
 
-    public void SetNearPoints(Vector3 nearPos)
+    public void SetNearPoints(Vector3 nearPos) //Setea los puntos del plano cercano.
     {
-
         Vector3 nearPlaneDistance = cam.transform.position + (cam.transform.forward * cam.nearClipPlane);
 
         nearTopLeft = nearPlaneDistance + (cam.transform.up * halfCameraHeightNear) - (cam.transform.right * CameraHalfWidthNear);
@@ -121,11 +129,9 @@ public class Frustrum : MonoBehaviour
 
         nearBottomRight = nearPlaneDistance - (cam.transform.up * halfCameraHeightNear) + (cam.transform.right * CameraHalfWidthNear);
     }
-    public void SetFarPoints(Vector3 farPos)
+    public void SetFarPoints(Vector3 farPos) //Setea los puntos del plano lejano.
     {
-
         Vector3 farPlaneDistance = cam.transform.position + (cam.transform.forward * cam.farClipPlane);
-
 
         farTopLeft = farPlaneDistance + (cam.transform.up * halfCameraHeightfar) - (cam.transform.right * CameraHalfWidthFar);
 
@@ -147,7 +153,7 @@ public class Frustrum : MonoBehaviour
         return vector;
     }
 
-    public void CheckObjetColition(WorldObject currentObject)
+    public void CheckObjetColition(WorldObject currentObject) //Chequea si los objetos estan dentro del o fuera del frustrum.
     {
         bool isInside = false;
 
@@ -202,7 +208,7 @@ public class Frustrum : MonoBehaviour
             }
         }
     }
-    public void OnDrawGizmos()
+    public void OnDrawGizmos() //Dibuja los planos del frustrum.
     {
         if (!Application.isPlaying)
         {
@@ -237,16 +243,13 @@ public class Frustrum : MonoBehaviour
         }
         Gizmos.color = Color.green;
     }
-    public void DrawPlane(Vector3 p1, Vector3 p2, Vector3 p3, Vector3 p4)
+    public void DrawPlane(Vector3 p1, Vector3 p2, Vector3 p3, Vector3 p4) // Dibuja las lineas de los planos.
     {
         Gizmos.DrawLine(p1, p2);
         Gizmos.DrawLine(p2, p3);
         Gizmos.DrawLine(p3, p4);
         Gizmos.DrawLine(p4, p1);
 
-        //Gizmos.color = Color.red;
-        //Gizmos.DrawLine(p1, p3);
-        //Gizmos.DrawLine(p2, p4);
         Gizmos.color = Color.green;
     }
 }

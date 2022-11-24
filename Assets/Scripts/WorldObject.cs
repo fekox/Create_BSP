@@ -60,17 +60,6 @@ public class WorldObject : MonoBehaviour
         aabb[7] = new Vector3(center.x + size.x, center.y - size.y, center.z + size.z);  // Back bottom right corner
 
 
-        // tranformar las Posiciones en puntos en el espacio
-        //aabb[0] = transform.TransformPoint(aabb[0]);
-        //aabb[1] = transform.TransformPoint(aabb[1]);
-        //aabb[2] = transform.TransformPoint(aabb[2]);
-        //aabb[3] = transform.TransformPoint(aabb[3]);
-        //aabb[4] = transform.TransformPoint(aabb[4]);
-        //aabb[5] = transform.TransformPoint(aabb[5]);
-        //aabb[6] = transform.TransformPoint(aabb[6]);
-        //aabb[7] = transform.TransformPoint(aabb[7]);
-
-
         // Roto el punto en la direccion que rota el objeto (Punto a rotar , pivot en el que rota , angulo en cada eje)
         aabb[0] = RotatePointAroundPivot(aabb[0], transform.position, transform.rotation.eulerAngles);
         aabb[1] = RotatePointAroundPivot(aabb[1], transform.position, transform.rotation.eulerAngles);

@@ -17,12 +17,18 @@ public class CameraLook : MonoBehaviour
 
     void Update()
     {
+        //Seteo la variable X del mouse.
         float mouseX = Input.GetAxis("Mouse X") * mouseSesitivity * Time.deltaTime;
+        
+        //Seteo la variable Y del mouse.
         float mouseY = Input.GetAxis("Mouse Y") * mouseSesitivity * Time.deltaTime;
 
+        //Rotacion Horizontal.
         xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
+        //Rotacion Vertical.
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         playerBody.Rotate(Vector3.up * mouseX);
     }

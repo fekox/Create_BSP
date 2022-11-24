@@ -129,7 +129,7 @@ public class binaryspacepartitioningalgorithm : MonoBehaviour
 
         return a + (((currentPlane.distance - nDotA) / nDotBA) * ba);
     }
-    public void setWordPoints()
+    public void setWordPoints() //Settea los puntos del mundo.
     {
         // Esquina principal
         wordPoints[0] = new Vector3(transform.position.x - 10, transform.position.y, transform.position.z + 10);
@@ -259,7 +259,7 @@ public class binaryspacepartitioningalgorithm : MonoBehaviour
         wordPoints[70] = new Vector3(transform.position.x + 30, transform.position.y, transform.position.z + 3);
         wordPoints[71] = new Vector3(transform.position.x + 30, transform.position.y + 5, transform.position.z + 3);
     }
-    public void setWordPlanes()
+    public void setWordPlanes() //Setea los planos del mundo.
     {
         wallPlanes[0].Set3Points(wordPoints[2], wordPoints[3], wordPoints[1]);
         wallPlanes[1].Set3Points(wordPoints[4], wordPoints[5], wordPoints[3]);
@@ -273,16 +273,8 @@ public class binaryspacepartitioningalgorithm : MonoBehaviour
         wallPlanes[9].Set3Points(wordPoints[20], wordPoints[21], wordPoints[13]);
         wallPlanes[10].Set3Points(wordPoints[15], wordPoints[23], wordPoints[22]);
         wallPlanes[11].Set3Points(wordPoints[22], wordPoints[23], wordPoints[15]);
-
-        //for (int i = 0; i < walls; ++i)
-        //{
-        //    GameObject p = GameObject.CreatePrimitive(PrimitiveType.Plane);
-        //    p.name = "Plane " + i.ToString();
-        //    p.transform.position = -wallPlanes[i].normal * wallPlanes[i].distance;
-        //    p.transform.rotation = Quaternion.FromToRotation(Vector3.up, wallPlanes[i].normal);
-        //}
     }
-    private void OnDrawGizmos()
+    private void OnDrawGizmos() //Dinuja los puntos del mundo.
     {
         if (!Application.isPlaying)
         {
@@ -301,10 +293,5 @@ public class binaryspacepartitioningalgorithm : MonoBehaviour
         {
             Gizmos.DrawSphere(colitionPoints[i], 0.5f);
         }
-
-        //for (int i = 0; i < colitionPoints.Count; i++)
-        //{
-        //    Gizmos.DrawLine(frustrum.nearCenter, colitionPoints[i]);
-        //}
     }
 }
