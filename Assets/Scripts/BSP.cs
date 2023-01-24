@@ -10,7 +10,7 @@ public class BSP : MonoBehaviour
         public Vector3 dir;
     }
 
-    [SerializeField] private room[] rooms;
+    [SerializeField] private Room[] rooms;
     [SerializeField] private float lineMargin;
     [SerializeField] private float renderDis;
     [SerializeField] private float iterFreq;
