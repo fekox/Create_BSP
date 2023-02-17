@@ -43,11 +43,11 @@ public class BSP : MonoBehaviour
         }
     }
 
-    private void CheckLine(Line line)
+    private void CheckLine(Line line) //Va chequeando cada punto de la linea imaginaria.
     {
         Vector3[] points = new Vector3[(int)(renderDis / iterFreq)];
 
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.green;
 
         for (int i = 0; i < points.Length; i++)
         {
@@ -66,7 +66,7 @@ public class BSP : MonoBehaviour
         }
     }
 
-    public void InitLines()
+    public void InitLines() // Inicializa las lineas segun la posicion inicial y la direccion.
     {
         for (int i = 0; i < lines.Length; i++)
         {
@@ -76,13 +76,13 @@ public class BSP : MonoBehaviour
         }
     }
 
-    public void DrawLines()
+    public void DrawLines() //Dibuja las lineas. (Los puntos rojos)
     {
         for (int i = 0; i < lines.Length; i++)
         {
             Vector3[] points = new Vector3[(int)(renderDis / iterFreq)];
 
-            Gizmos.color = Color.red;
+            Gizmos.color = Color.green;
 
             for (int j = 0; j < points.Length; j++)
             {

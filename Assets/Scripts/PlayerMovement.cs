@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
         //Creo una variable x y le setteo el movimiento horizontal.
         float x = Input.GetAxis("Horizontal");
 
-        //Creo una variable Y y le setteo el movimiento vertical.
+        //Creo una variable Z y le setteo el movimiento vertical.
         float z = Input.GetAxis("Vertical");
 
         //Seteo el movimiento.
