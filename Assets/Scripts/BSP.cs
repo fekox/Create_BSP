@@ -76,7 +76,7 @@ public class BSP : MonoBehaviour
         }
     }
 
-    public void DrawLines() //Dibuja las lineas. (Los puntos rojos)
+    public void DrawLines() //Dibuja las lineas. (Los puntos verdes)
     {
         for (int i = 0; i < lines.Length; i++)
         {
